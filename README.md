@@ -1,4 +1,5 @@
-![Ailyn](./images/ailyn-pic.png)
+
+<img src="./images/ailyn-pic.png" alt="Ailun" width="200" height="200">
 
 
 # Welcome to Ailyn
