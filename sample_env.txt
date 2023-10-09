@@ -1,0 +1,15 @@
+query_cache_collection = query_cache
+rag_collection         = aileena_qa
+rag_vector_dimension   = 1536
+st_model               = sentence-transformers/stsb-xlm-r-multilingual
+rag_prompt_filepath    = /home/ailyn/prompts/sales_agent.txt
+local_qdrant_path      = local_qdrant
+telegram_bot_token     = your telegram token
+twilio_account_sid     = your twilio_account_sid
+twilio_auth_token      = your twilio_auth_token
+cache_vector_dimension = 768
+open_ai_key            = your open_ai key
+query_validation_filepath  = /home/ailyn/prompts/validation.json
+welcome_filepath       = /home/ailyn/prompts/welcome.txt
+help_filepath          = /home/ailyn/prompts/help.txt
+tmp_audio_folder       = /home/ailyn/tmp
