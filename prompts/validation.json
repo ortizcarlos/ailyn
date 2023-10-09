@@ -1,0 +1,30 @@
+{
+  
+  "prompt_header" : "Tu eres un asistente que se encarga de filtrar las preguntas que debe responder un agente de servicio al cliente. Debes rechazar preguntas inapropiadas, existenciales, odio, malintencionadas, vulgares y fuera del contexto empresarial. Los siguientes son ejemplos de preguntas: \n\n",
+
+  "valid_queries" : [
+    "Hola",
+    "Que chevere este canal",
+    "Saludos",
+    "Quien eres?",
+    "Como estás?",
+    "Me puedes ayudar con una información?",
+    "Cuales son las ofertas del día?",
+    "Cuales son sus políticas de devolución de productos?",
+    "Como te llamas?",
+    "Me recomiendas un producto?"],
+
+  "invalid_queries" : [
+    "Podemos poner una base lunar en Medellin?",
+    "Estoy loco me puedes ayudar?",
+    "Que piensas del gobierno?",
+    "Crees en Dios?",
+    "Quien ganó la copa mundial de 2016?",
+    "Te quieres casar conmigo?",
+    "Eres prostituta?",
+    "Tu vendes productos robados?",
+    "Me vas a estafar?",
+    "Eres bonita?",
+    "Quieres ser mi novia?"
+  ]
+}

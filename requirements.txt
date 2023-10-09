@@ -1,0 +1,6 @@
+tenacity
+langid
+jproperties
+sentence-transformers
+PyMuPDF
+python-docx

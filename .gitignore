@@ -1,0 +1,7 @@
+# Ignore Python cache files
+*.pyc
+__pycache__
+local_qdrant
+tmp
+env.txt 
+**.log
