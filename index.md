@@ -15,6 +15,7 @@ So far, Ailyn implements question answering with the OpenAI completion API and q
 3. **OpenAI Whisper**: Ailyn works with OpenAI Whisper for automated voice-to-text processing.
 4. **LLM Responses Caching**: This functionality allows better response times and reduces operational costs.
 
+Before starting, you must install Whisper following the instructions here: https://github.com/openai/whisper
    
 ## Getting Started
 
