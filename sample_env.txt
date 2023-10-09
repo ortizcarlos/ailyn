@@ -1,5 +1,5 @@
 query_cache_collection = query_cache
-rag_collection         = aileena_qa
+rag_collection         = ailyn_qa
 rag_vector_dimension   = 1536
 st_model               = sentence-transformers/stsb-xlm-r-multilingual
 rag_prompt_filepath    = /home/ailyn/prompts/sales_agent.txt

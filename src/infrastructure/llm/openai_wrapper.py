@@ -15,7 +15,7 @@ limitations under the License.
 """
 import logging
 import openai
-from   time import sleep
+from   time     import sleep
 from   tenacity import (
     retry,
     stop_after_attempt,

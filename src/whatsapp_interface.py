@@ -74,7 +74,7 @@ async def bot_receiver(
                                  audio_note_resorce_id=audio_file)
 
     start_time = time.time()
-    answer     = await whatsapp_qa_pipeline.handle_query_interaction(context)
+    answer     = whatsapp_qa_pipeline.handle_query_interaction(context)
     end_time   = time.time()
     duration   = end_time - start_time
 

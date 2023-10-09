@@ -59,7 +59,7 @@ def load(envfile_path:str=None):
     _vector_env.cache_vector_database = cache_vector_database
     _vector_env.cache_embeddings      = cache_embeddings
     _vector_env.rag_embeddings        = rag_embeddings
-    _channels_env.telegram_bot_token = appconfig._env.telegram_bot_token
+    _channels_env.telegram_bot_token  = appconfig._env.telegram_bot_token
     _channels_env.welcome_filepath    = appconfig._env.welcome_filepath
     _channels_env.help_filepath       = appconfig._env.help_filepath
 
@@ -100,7 +100,6 @@ def load(envfile_path:str=None):
             ragHandler)
         
         return qa_pipeline
-    
     _pipeline_func = _qa_pipeline
     
 
