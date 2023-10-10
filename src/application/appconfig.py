@@ -46,6 +46,7 @@ def _load(config_filepath:str):
     _env.welcome_filepath       = configs.get("welcome_filepath").data
     _env.help_filepath          = configs.get("help_filepath").data
     _env.tmp_audio_folder       = configs.get("tmp_audio_folder").data
+    _env.whatsapp_api_port      = int(configs.get("whatsapp_api_port",8080).data)
 
 def openai_key():
     return _env.open_ai_key

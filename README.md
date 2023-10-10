@@ -66,6 +66,7 @@ query_validation_filepath  = /home/ailyn/prompts/validation.json
 welcome_filepath       = /home/ailyn/prompts/welcome.txt
 help_filepath          = /home/ailyn/prompts/help.txt
 tmp_audio_folder       = /home/ailyn/tmp
+whatsapp_api_port      = 8080
 ```
 
 

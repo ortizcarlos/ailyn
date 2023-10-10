@@ -109,3 +109,8 @@ def new_qa_pipeline():
 def get_twilio_mediator():
     return _channels_env._twilioMediator
 
+def get_whatsapp_api_port():
+    return appconfig._env.whatsapp_api_port
+
+
+

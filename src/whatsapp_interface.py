@@ -27,8 +27,9 @@ from   twilio.twiml.messaging_response import MessagingResponse
 
 from   application import ailyn
 from   interaction.context import InteractionContext
+from   util.timing import timing
 
-MAX_WAIT_SECONDS     = 12
+MAX_WAIT_MILISECONDS = 12000
 whatsapp_qa_pipeline = None
 twilioMediator       = None
 
@@ -54,6 +55,10 @@ async def bot_status():
     response.message("OK")
     return Response(content=str(response), media_type="application/xml")
 
+@timing
+def run_qa_pipeline(context):
+   return whatsapp_qa_pipeline.handle_query_interaction(context)
+
 @app.post('/bot-receiver')
 async def bot_receiver(
                 To:str   = Form(...), 
@@ -73,13 +78,15 @@ async def bot_receiver(
                                  destination_id=destination,
                                  audio_note_resorce_id=audio_file)
 
-    start_time = time.time()
-    answer     = whatsapp_qa_pipeline.handle_query_interaction(context)
-    end_time   = time.time()
-    duration   = end_time - start_time
+    answer,duration   = run_qa_pipeline(context)
 
-    if duration > MAX_WAIT_SECONDS:
-       logging.warn('A long LLM invocation')
+    if duration > MAX_WAIT_MILISECONDS:
+       '''
+        The Twilio API waits a maximum of MAX_WAIT_MILISECONDS for a response.
+        We have to send a direct response to the client when the request 
+        processing took more than MAX_WAIT_MILISECONDS.
+       '''
+       logging.warn('A long LLM invocation detected')
        twilioMediator.send_msg( 
             From,
             To,
@@ -88,7 +95,7 @@ async def bot_receiver(
         response.message(answer)
         return Response(content=str(response), media_type="application/xml")
     
-def _boot_app():
+def boot_app():
    if len(sys.argv) >= 2:
       ailyn.load(sys.argv[1])
    else:
@@ -100,6 +107,10 @@ def _boot_app():
 
 # Run the FastAPI app
 if __name__ == "__main__":
-   _boot_app()
-   uvicorn.run(app, host="0.0.0.0", port=8080)
+   
+   boot_app()
+   uvicorn.run(
+      app, 
+      host= "0.0.0.0", 
+      port= ailyn.get_whatsapp_api_port())
   
