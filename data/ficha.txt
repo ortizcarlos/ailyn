@@ -1,0 +1,88 @@
+Estado de los envios. Resumen de los envios completados y pendientes.
+Ficha Operativa de envios del Cliente - TechSoluciones
+
+## Últimos Envíos Completados:
+
+### Envío 1:
+
+- **Fecha de Envío**: 25 de Agosto de 2023
+- **Origen**: Ciudad Tecnológica, Estados Unidos
+- **Destino**: Hong Kong
+- **Descripción de la Carga**: Componentes Electrónicos
+- **Peso Total**: 3,500 kg
+- **Estado de Entrega**: Completado
+- **Observaciones**: Entrega puntual y sin incidentes.
+
+### Envío 2:
+
+- **Fecha de Envío**: 12 de Julio de 2023
+- **Origen**: Ciudad Tecnológica, Estados Unidos
+- **Destino**: Londres, Reino Unido
+- **Descripción de la Carga**: Productos Tecnológicos
+- **Peso Total**: 2,200 kg
+- **Estado de Entrega**: Completado
+- **Observaciones**: Entrega exitosa y cumplimiento de plazos.
+
+### Envío 3:
+
+- **Fecha de Envío**: 5 de Junio de 2023
+- **Origen**: Ciudad Tecnológica, Estados Unidos
+- **Destino**: Sídney, Australia
+- **Descripción de la Carga**: Equipos de Red
+- **Peso Total**: 4,800 kg
+- **Estado de Entrega**: Completado
+- **Observaciones**: Entrega sin retrasos.
+
+### Envío 4:
+
+- **Fecha de Envío**: 18 de Mayo de 2023
+- **Origen**: Ciudad Tecnológica, Estados Unidos
+- **Destino**: Sao Paulo, Brasil
+- **Descripción de la Carga**: Dispositivos Móviles
+- **Peso Total**: 1,800 kg
+- **Estado de Entrega**: Completado
+- **Observaciones**: Entrega rápida y eficiente.
+
+### Envío 5:
+
+- **Fecha de Envío**: 2 de Abril de 2023
+- **Origen**: Ciudad Tecnológica, Estados Unidos
+- **Destino**: Ciudad del Cabo, Sudáfrica
+- **Descripción de la Carga**: Componentes Electrónicos
+- **Peso Total**: 2,500 kg
+- **Estado de Entrega**: Completado
+- **Observaciones**: Entrega exitosa y sin problemas.
+
+## Envíos en Proceso:
+
+### Envío 1:
+
+- **Fecha de Envío**: 10 de Septiembre de 2023
+- **Origen**: Ciudad Tecnológica, Estados Unidos
+- **Destino**: Tokio, Japón
+- **Descripción de la Carga**: Productos Electrónicos
+- **Peso Total**: 3,000 kg
+- **Estado de Entrega**: En Proceso
+- **Observaciones**: Seguimiento en tiempo real en curso.
+
+### Envío 2:
+
+- **Fecha de Envío**: 3 de Octubre de 2023
+- **Origen**: Ciudad Tecnológica, Estados Unidos
+- **Destino**: Ciudad de México, México
+- **Descripción de la Carga**: Equipos de Comunicación
+- **Peso Total**: 2,700 kg
+- **Estado de Entrega**: En Proceso
+- **Observaciones**: Programado para entrega.
+
+### Envío 3:
+
+- **Fecha de Envío**: 15 de Noviembre de 2023
+- **Origen**: Ciudad Tecnológica, Estados Unidos
+- **Destino**: Singapur
+- **Descripción de la Carga**: Productos Tecnológicos
+- **Peso Total**: 4,500 kg
+- **Estado de Entrega**: En Proceso
+- **Observaciones**: Preparación en curso.
+
+Esta ficha operativa proporciona información sobre el cliente TechSoluciones, sus últimos envíos completados y los envíos actualmente en proceso. Recuerda que este es un documento ficticio con fines educativos.

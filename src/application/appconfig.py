@@ -18,16 +18,14 @@ import logging
 
 from jproperties import Properties
 
-
-
 class Env():...
-
 _env = Env()
 
-def _load(config_filepath:str):
-    
-    configs = Properties()
+configs = Properties()
 
+def _load(config_filepath:str):
+    global configs
+    
     with open(config_filepath, 'rb') as config_file:
        configs.load(config_file)     
 
@@ -47,6 +45,10 @@ def _load(config_filepath:str):
     _env.help_filepath          = configs.get("help_filepath").data
     _env.tmp_audio_folder       = configs.get("tmp_audio_folder").data
     _env.whatsapp_api_port      = int(configs.get("whatsapp_api_port",8080).data)
+
+
+def get_property(name:str,default=None):
+    return configs.get(name,default).data
 
 def openai_key():
     return _env.open_ai_key

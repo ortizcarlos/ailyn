@@ -103,6 +103,9 @@ def load(envfile_path:str=None):
     _pipeline_func = _qa_pipeline
     
 
+def get_config_property(name:str,default=None):
+    return appconfig.get_property(name,default)
+
 def new_qa_pipeline():
     return _pipeline_func()
 

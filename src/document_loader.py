@@ -28,7 +28,9 @@ from   infrastructure.llm.core        import OpenAIEmbeddings
 from   infrastructure.vector.database import VectorDatabase
 
 
-MINIBATCH_SIZE = 3
+MINIBATCH_SIZE      = 3
+DOCUMENT_CHUNK_SIZE = 1500
+STRIDE              = 1200
 
 def load_documents(
         directory_path:str, 
@@ -103,7 +105,11 @@ def _boot_app():
       ailyn.load()
       documents_folder = sys.argv[1] 
     
-    return documents_folder
+    return ( 
+              documents_folder,
+              int(ailyn.get_config_property('document_text_chunk_size',DOCUMENT_CHUNK_SIZE)),
+              int(ailyn.get_config_property('document_text_stride',STRIDE))
+              )
 
 
 
@@ -111,7 +117,7 @@ if __name__=='__main__':
 
     file_extensions  = text_extractor.accepted_file_extensions
 
-    documents_folder = _boot_app()
+    documents_folder,chunk_size,stride = _boot_app()
     if not(os.path.exists(documents_folder)): FileExistsError(f"Documents folder '{documents_folder}' not found!")  
 
     print(F'Processing files in folder {documents_folder}')
@@ -119,6 +125,6 @@ if __name__=='__main__':
     recreate_retrieval_database(
         documents_folder,
         acceptend_extensions=file_extensions,
-        chunk_size=1000,
-        stride=700)
+        chunk_size = chunk_size,
+        stride     = stride )
     
