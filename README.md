@@ -1,8 +1,8 @@
 
-<img src="./images/ailyn-pic.png" alt="Ailun" width="200" height="200">
-
 
 # Welcome to Ailyn
+
+<img src="./images/ailyn-pic.png" alt="Ailun" width="120" height="120">
 
 Ailyn is a simple but powerful open-source virtual sales agent that uses Retrieval Augmented Generation (RAG) techniques to provide customer service and sales on various platforms such as WhatsApp and Telegram.
 
