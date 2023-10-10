@@ -4,3 +4,5 @@ jproperties
 sentence-transformers
 PyMuPDF
 python-docx
+qdrant-client
+openai==0.26.0
