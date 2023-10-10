@@ -44,7 +44,7 @@ Example:
     guarantee.pdf
 ```    
 
-**python document_loader /home/mydata**
+**python document_loader.py /home/mydata**
 
 The **env_filepath** configuration file is optional because, by default, the system will look for an env.txt file in the current path.
 
