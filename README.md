@@ -49,7 +49,7 @@ The **env_filepath** configuration file is optional because, by default, the sys
 
 The following is the structure of the env.txt file:
 
-
+```
 query_cache_collection = query_cache
 rag_collection         = ailyn_qa
 rag_vector_dimension   = 1536
@@ -65,7 +65,7 @@ query_validation_filepath  = /home/ailyn/prompts/validation.json
 welcome_filepath       = /home/ailyn/prompts/welcome.txt
 help_filepath          = /home/ailyn/prompts/help.txt
 tmp_audio_folder       = /home/ailyn/tmp
-
+```
 
 
 ### Launching Ailyn agent interfaces
