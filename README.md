@@ -23,13 +23,13 @@ Before starting, you must install Whisper following the instructions here: https
 
 To start using Ailyn, clone this repository and install all the required dependencies.
 
-Once you have cloned the repository change to the project's root folder by typing **cd ailyn/**
+Once you have cloned the repository change to the project's root folder by typing **cd ailyn**
 
 ### Processing your documents
 
 Ailyn allows users to chat with your private data through WhatsApp and Telegram. So, the first step to get Ailyn working is to 'index' (get vector embeddings) your documents so the agent can start answering questions about your data.
 
-By default, the system supports documents in .pdf, .docx, and .txt format.
+By default, the system supports documents in **.pdf**, **.docx**, and **.txt** format.
 
 So, put all your documents in a folder and (assuming you are in the Ailyn root directory) run the following command in your terminal:
 
@@ -37,11 +37,12 @@ python ./src/document_loader.py [env_filepath] data_folder
 
 Example:
 
+```
 /home/mydata
     catalog.docx
     return_policies.pdf
     guaranties.pdf
-    
+```    
 
 python document_loader /home/mydata
 
@@ -86,7 +87,7 @@ python telegram_interface.py [env file path]
 
 ### Whatsapp - Twilio
 
-Ailyn uses the Twilio WhatsApp API to expose a virtual agent through WhatsApp. So, you must create a Twilio Account (this is free) to obtain your account SID and auth Token. Once you get your credentials, put them in the env.txt file.
+Ailyn uses the **Twilio WhatsApp API** to expose a virtual agent through WhatsApp. So, you must create a Twilio Account (this is free) to obtain your account SID and auth Token. Once you get your credentials, put them in the env.txt file.
 
 ```
 twilio_account_sid     = your twilio_account_sid
