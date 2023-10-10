@@ -41,7 +41,7 @@ Example:
 /home/mydata
     catalog.docx
     return_policies.pdf
-    guaranties.pdf
+    guarantee.pdf
 ```    
 
 python document_loader /home/mydata
