@@ -1,6 +1,7 @@
 tenacity
 langid
 jproperties
+pydub
 sentence-transformers
 PyMuPDF
 python-docx
