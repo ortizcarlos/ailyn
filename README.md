@@ -33,7 +33,7 @@ By default, the system supports documents in **.pdf**, **.docx**, and **.txt** f
 
 So, put all your documents in a folder and (assuming you are in the Ailyn root directory) run the following command in your terminal:
 
-python ./src/document_loader.py [env_filepath] data_folder
+**python ./src/document_loader.py [env_filepath] data_folder**
 
 Example:
 
@@ -44,7 +44,7 @@ Example:
     guarantee.pdf
 ```    
 
-python document_loader /home/mydata
+**python document_loader /home/mydata**
 
 The **env_filepath** configuration file is optional because, by default, the system will look for an env.txt file in the current path.
 
