@@ -81,6 +81,38 @@ python whatsapp_interface.py [env file path]
 python telegram_interface.py [env file path]
 
 
+## References
+
+
+### Whatsapp - Twilio
+
+Ailyn uses the Twilio WhatsApp API to expose a virtual agent through WhatsApp. So, you must create a Twilio Account (this is free) to obtain your account SID and auth Token. Once you get your credentials, put them in the env.txt file.
+
+```
+twilio_account_sid     = your twilio_account_sid
+twilio_auth_token      = your twilio_auth_token
+```
+
+Now, you can test your WhatsApp agent in the Twilio sandbox. Note that the Ailyn WhatsApp web interface must be accessible through the Internet. So you must host Ailyn in the cloud or use **ngrok** to expose your local instance. 
+
+Once your Ailyn WhatsApp interface is public, you can set up the Twilio Sandbox: 
+
+<img src="./images/twilio.png">
+
+
+
+### Telegram
+
+Here, you can find general information about Telegram Bots, including how to get your Telegram bot token.
+
+https://core.telegram.org/bots/tutorial
+
+Once you get your bot token, put it in the env.txt file.
+
+```
+telegram_bot_token     = your telegram token
+```
+
 
 ## Contributing
 
