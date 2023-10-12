@@ -44,19 +44,6 @@ Example:
     guarantee.pdf
 ```    
 
-The project comes with a set of informational documents (In Spanish :) ) from a fictional Logistics agency called FlexLogistics. You can start playing around with Ailyn loading those documents running this command:
-
-**python /src/document_loader.py ./data**
-
-After that, you can start the WhatsApp, telegram, or command-line interface and issue questions like:
-
-- What are the shipping prices for general cargo?
-- What are the prices for refrigerated cargo?
-- Which ports do you arrive at in China?
-- Can I work with you?
-- Do you have corporate plans? 
-- Give me a summary of the corporate plan, including prices.
-
 **python document_loader.py /home/mydata**
 
 The **env_filepath** configuration file is optional because, by default, the system will look for an env.txt file in the current path.
@@ -82,9 +69,23 @@ tmp_audio_folder       = /home/ailyn/tmp
 whatsapp_api_port      = 8080
 ```
 
+#### Start playing around with RAG using the sample documents.
+
+The project comes with a set of informational documents (In Spanish :) ) from a fictional Logistics agency called FlexLogistics. You can start playing around with Ailyn loading those documents running this command:
+
+**python /src/document_loader.py ./data**
+
+After that, you can start the WhatsApp, telegram, or command-line interface and issue questions like:
+
+- What are the shipping prices for general cargo?
+- What are the prices for refrigerated cargo?
+- Which ports do you arrive at in China?
+- Can I work with you?
+- Do you have corporate plans? 
+- Give me a summary of the corporate plan, including prices.
+
 
 ### Launching Ailyn agent interfaces
-
 
 
 **To launch the WhatsApp agent type:**
