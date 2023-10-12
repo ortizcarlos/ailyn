@@ -30,13 +30,12 @@ from interaction.handlers.rag_handler     import RAGQueryHandler
 from interaction.qa_pipeline              import QAPipeline
 from interaction.handlers.audio_handler   import AudioHandler
 
-_pipeline_func      = None
-_channels_env       = appconfig.Env()
-_vector_env         = appconfig.Env()
+_channels_env    = appconfig.Env()
+vectordb         = appconfig.Env()
 
 def load(envfile_path:str=None):
 
-    global _pipeline_func,_vector_env 
+    global _pipeline_func,vectordb 
     global _channels_env
     appconfig.load(envfile_path)
 
@@ -55,10 +54,11 @@ def load(envfile_path:str=None):
     cache_vector_database = VectorDatabase.from_qdrant(cache_qdrant_client)
     cache_embeddings      = SentenceTransformersEmbedings(cache_embeddings_model_name)
 
-    _vector_env.rag_vector_database   = rag_vector_database
-    _vector_env.cache_vector_database = cache_vector_database
-    _vector_env.cache_embeddings      = cache_embeddings
-    _vector_env.rag_embeddings        = rag_embeddings
+    vectordb.rag_vector_database   = rag_vector_database
+    vectordb.cache_vector_database = cache_vector_database
+    vectordb.cache_embeddings      = cache_embeddings
+    vectordb.rag_embeddings        = rag_embeddings
+
     _channels_env.telegram_bot_token  = appconfig._env.telegram_bot_token
     _channels_env.welcome_filepath    = appconfig._env.welcome_filepath
     _channels_env.help_filepath       = appconfig._env.help_filepath
@@ -75,22 +75,26 @@ def load(envfile_path:str=None):
                 prompt += line
         return prompt
 
-    _channels_env._twilioMediator       = TwilioMediator(appconfig.twilioSID,appconfig.twilioToken)
+    _channels_env._twilioMediator  = TwilioMediator(
+        appconfig.get_twilio_sid(),
+        appconfig.get_twilio_token())
 
     def _qa_pipeline():
         
         audioHandler           = AudioHandler(
                                      tmp_audio_folder=appconfig._env.tmp_audio_folder)
         cacheHandler           = QueryCacheHandler(rag_cache)
+        
         queryValidationHandler = new_query_validation_handler(
             appconfig._env.query_validation_filepath,
             rag_cache)
+        
         ragHandler = RAGQueryHandler(
-            embeddings=rag_embeddings,
-            vector_db=rag_vector_database,
-            collection_name=rag_collection,
-            cache=rag_cache,
-            prompt=load_prompt_file(rag_prompt_file)
+            embeddings      = rag_embeddings,
+            vector_db       = rag_vector_database,
+            collection_name = rag_collection,
+            cache  = rag_cache,
+            prompt = load_prompt_file(rag_prompt_file)
         )
         qa_pipeline = QAPipeline(
             'RAGPipeline',
@@ -100,6 +104,7 @@ def load(envfile_path:str=None):
             ragHandler)
         
         return qa_pipeline
+    
     _pipeline_func = _qa_pipeline
     
 

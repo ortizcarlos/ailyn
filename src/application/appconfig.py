@@ -52,9 +52,11 @@ def get_property(name:str,default=None):
 
 def openai_key():
     return _env.open_ai_key
-def twilioSID():
+
+def get_twilio_sid():
       return _env.twilio_account_sid
-def twilioToken():
+
+def get_twilio_token():
      return _env.twilio_auth_token
 
 def load(env_file_path=None):

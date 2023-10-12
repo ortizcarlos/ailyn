@@ -30,8 +30,6 @@ from   interaction.context import InteractionContext
 from   util.timing import timing
 
 MAX_WAIT_MILISECONDS = 12000
-whatsapp_qa_pipeline = None
-twilioMediator       = None
 
 app  = FastAPI()
 
@@ -86,7 +84,7 @@ async def bot_receiver(
         We have to send a direct response to the client when the request 
         processing took more than MAX_WAIT_MILISECONDS.
        '''
-       logging.warn('A long LLM invocation detected')
+       logging.warning('A long LLM invocation detected')
        twilioMediator.send_msg( 
             From,
             To,

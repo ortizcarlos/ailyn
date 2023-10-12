@@ -59,11 +59,11 @@ def recreate_retrieval_database(
         chunk_size=1200, 
         stride=700):
     
-    ailyn._vector_env.cache_vector_database.create_collection(
+    ailyn.vectordb.cache_vector_database.create_collection(
          appconfig._env.query_cache_collection,
          appconfig._env.cache_vector_dimension)
   
-    ailyn._vector_env.rag_vector_database.create_collection(
+    ailyn.vectordb.rag_vector_database.create_collection(
         appconfig._env.rag_collection,
         vector_dimension=  appconfig._env.rag_vector_dimension)
 
@@ -76,9 +76,9 @@ def recreate_retrieval_database(
         doc_batch.append(doc['doc'])
         if doc_count == MINIBATCH_SIZE:
             doc_count = 0
-            ailyn._vector_env.rag_vector_database.save_batch(
+            ailyn.vectordb.rag_vector_database.save_batch(
                             collection  = appconfig._env.rag_collection,
-                            vector_list = ailyn._vector_env.rag_embeddings(doc_batch),
+                            vector_list = ailyn.vectordb.rag_embeddings(doc_batch),
                             meta_batch  = metadata)
             metadata  = []
             doc_batch = []
@@ -86,9 +86,9 @@ def recreate_retrieval_database(
             doc_count += 1
 
     if (len(metadata)>0):
-        ailyn._vector_env.rag_vector_database.save_batch(
+        ailyn.vectordb.rag_vector_database.save_batch(
                             collection  =  appconfig._env.rag_collection,
-                            vector_list =  ailyn._vector_env.rag_embeddings(doc_batch),
+                            vector_list =  ailyn.vectordb.rag_embeddings(doc_batch),
                             meta_batch=metadata)
         
 def _boot_app():
@@ -120,7 +120,7 @@ if __name__=='__main__':
     documents_folder,chunk_size,stride = _boot_app()
     if not(os.path.exists(documents_folder)): FileExistsError(f"Documents folder '{documents_folder}' not found!")  
 
-    print(F'Processing files in folder {documents_folder}')
+    print(f"Processing files in folder: '{documents_folder}' ")
 
     recreate_retrieval_database(
         documents_folder,

@@ -43,18 +43,15 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 
-class Params():...
-
 logger          = logging.getLogger(__name__)
-qa_pipeline     = None
-telegram_params = Params()
+telegram_params = dict(welcome_msg='',help_msg='')
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a message when the command /start is issued."""
     user    = update.effective_user.name
 
     await update.message.reply_html(
-        telegram_params.welcome_msg,
+        telegram_params['welcome_msg'],
         reply_markup=ForceReply(selective=True),
     )
 
@@ -63,7 +60,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     """Send a message when the command /help is issued."""
 
     await update.message.reply_html(
-        telegram_params.help_msg,
+        telegram_params['help_msg'],
         reply_markup=ForceReply(selective=True),
     )
 
@@ -106,7 +103,7 @@ async def audio_fn(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 def main():
    
-   global qa_pipeline,telegram_params
+   global qa_pipeline
 
    if len(sys.argv) >= 2:
       ailyn.load(sys.argv[1])
@@ -115,10 +112,10 @@ def main():
       ailyn.load()  
 
    with open(ailyn._channels_env.welcome_filepath,encoding='utf-8') as wf:
-      telegram_params.welcome_msg = wf.read()
+      telegram_params['welcome_msg'] = wf.read()
 
    with open(ailyn._channels_env.help_filepath,encoding='utf-8') as hf:
-      telegram_params.help_msg = hf.read()
+      telegram_params['help_msg'] = hf.read()
    
    qa_pipeline = ailyn.new_qa_pipeline()
      

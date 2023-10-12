@@ -20,7 +20,7 @@ from   infrastructure.vector.database import VectorDatabase
 
 from typing import List,Dict
 
-THRESHOLD  = 0.85
+THRESHOLD  = 0.9
 ANSWER_KEY = 'answer'
 QUERY_KEY  = 'query'
 QUERY_CACHE_BATCH = 5
@@ -40,7 +40,8 @@ class LLMQueryCache():
     def get_answer_from_cache(self,query):
         embedding_list   = self.embeddings([query]) 
         query_embeddings = embedding_list[0]
-        results = self.vector_database.query(self.collection, 
+        results = self.vector_database.query(
+                          self.collection, 
                           query_embeddings, 
                           top_k=2)
         return self.get_best_candidate(results)
@@ -49,7 +50,7 @@ class LLMQueryCache():
         try:
           best_candidate = max(
              (item for item in results if item.score >= threshold), 
-              key=lambda item: item.score)
+                                 key=lambda item: item.score)
           return best_candidate.payload[ANSWER_KEY]
         except ValueError:
           return None
