@@ -4,7 +4,7 @@
 
 <img src="./images/ailyn-pic.png" alt="Ailun" width="120" height="120">
 
-Ailyn is a simple open-source virtual sales agent that uses Retrieval Augmented Generation (RAG) techniques to provide customer service and sales on various platforms such as WhatsApp and Telegram. All the RAG functionality was written from scratch, so there are no dependencies on libraries like LangChaing or LlamaIndex.
+**Ailyn** is a simple open-source virtual sales agent that uses **Retrieval Augmented Generation** (**RAG**) techniques to provide customer service and sales on various platforms such as WhatsApp and Telegram. All the **RAG** functionality was written from scratch, so there are **no dependencies** on libraries like LangChaing or LlamaIndex.
 
 If you are new to RAG, you can use Ailyn to learn how to implement the main components of a "ChapGPT on your private data" application, including document embedding, retrieval, LLM response caching, and more.
 
@@ -46,7 +46,7 @@ Example:
 
 The project comes with a set of informational documents (In Spanish :) ) from a fictional Logistics agency called FlexLogistics. You can start playing around with Ailyn loading those documents running this command:
 
-python /src/document_loader.py ./data
+**python /src/document_loader.py ./data**
 
 After that, you can start the WhatsApp, telegram, or command-line interface and issue questions like:
 
@@ -132,6 +132,8 @@ telegram_bot_token     = your telegram token
 ## Contributing
 
 As an open-source project, we would love for you to contribute. If you are interested in helping, check out our contribution guide to understand how you can contribute.
+
+You can show your support by giving a star to this project.
 
 ## License 
 
