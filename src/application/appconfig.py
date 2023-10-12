@@ -23,6 +23,9 @@ _env = Env()
 
 configs = Properties()
 
+QDRANT_LOCAL     = 'local'
+QDRANT_SERVER    = 'url'
+
 def _load(config_filepath:str):
     global configs
     
@@ -34,7 +37,7 @@ def _load(config_filepath:str):
     _env.rag_vector_dimension   =  int(configs.get("rag_vector_dimension", 1536).data) 
     _env.st_model               =  configs.get("st_model",'sentence-transformers/stsb-xlm-r-multilingual').data 
     _env.rag_prompt_filepath    =  configs.get("rag_prompt_filepath").data
-    _env.local_qdrant_path      =  configs.get("local_qdrant_path",'local_qdrant').data
+   
     _env.telegram_bot_token     =  configs.get("telegram_bot_token").data
     _env.twilio_account_sid     =  configs.get("twilio_account_sid").data
     _env.twilio_auth_token      =  configs.get("twilio_auth_token").data
@@ -45,6 +48,19 @@ def _load(config_filepath:str):
     _env.help_filepath          = configs.get("help_filepath").data
     _env.tmp_audio_folder       = configs.get("tmp_audio_folder").data
     _env.whatsapp_api_port      = int(configs.get("whatsapp_api_port",8080).data)
+
+    qdrant_connection_str       = configs.get("qdrant_connection",'local|local_qdrant').data
+    
+    if '|' not in qdrant_connection_str:
+        raise EnvironmentError('Invalid Qdrant connection configuration. example: local|qrant_local  ulr|localhost')
+    
+    connection_type,connection_str = qdrant_connection_str.split('|')
+
+    if connection_type.lower() not in (QDRANT_LOCAL,QDRANT_SERVER) : 
+        raise EnvironmentError('Invalid Qdrant connection type. Values (local,url). Example: local|qrant_local  ulr|localhost')
+
+    _env.qdrant_connection_type =  connection_type
+    _env.qdrant_connection      =  connection_str
 
 
 def get_property(name:str,default=None):

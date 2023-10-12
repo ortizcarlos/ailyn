@@ -17,7 +17,7 @@ limitations under the License.
 import time
 import logging
 import sys
-from   typing import Optional
+
 
 
 from   application import ailyn

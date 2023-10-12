@@ -33,6 +33,8 @@ from interaction.handlers.audio_handler   import AudioHandler
 _channels_env    = appconfig.Env()
 vectordb         = appconfig.Env()
 
+
+
 def load(envfile_path:str=None):
 
     global _pipeline_func,vectordb 
@@ -40,7 +42,12 @@ def load(envfile_path:str=None):
     appconfig.load(envfile_path)
 
     rag_prompt_file = appconfig._env.rag_prompt_filepath
-    qdrant          = QdrantClient( path= appconfig._env.local_qdrant_path )
+
+    if appconfig._env.qdrant_connection_type.lower()==appconfig.QDRANT_LOCAL: 
+       qdrant = QdrantClient( path= appconfig._env.qdrant_connection )
+    else:
+       qdrant = QdrantClient(appconfig._env.qdrant_connection)
+
     openai.api_key  =  appconfig.openai_key()
 
     rag_qdrant_client   = qdrant
