@@ -31,6 +31,12 @@ from   util.timing import timing
 
 MAX_WAIT_MILISECONDS = 12000
 
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
+
+logger          = logging.getLogger(__name__)
+
 app  = FastAPI()
 
 app.add_middleware(
@@ -57,26 +63,49 @@ async def bot_status():
 def run_qa_pipeline(context):
    return whatsapp_qa_pipeline.handle_query_interaction(context)
 
+
+def isProcessable(form_data:dict,*,query,media_file):
+   logger.info(f"query: [{query}] media_file:[{media_file}] ContentType: [{form_data.get('MediaContentType0','')}]'")
+   if (form_data.get('MediaContentType0','') == 'image/jpeg'):
+      return False
+   
+   return (query or media_file)
+   
+def trace_request(request,form_data:dict):
+   logger.debug(f"Headers:           {request.headers}")
+   logger.debug(f"Query Parameters:  {request.query_params}")
+   logger.debug(f"Path Parameters:   {request.path_params}")
+   for key in form_data:
+       logger.debug(f'For-Variable [{key}] - Value [{form_data[key]}]')
+
 @app.post('/bot-receiver')
 async def bot_receiver(
+                request: Request,
                 To:str   = Form(...), 
                 From:str = Form(...),
-                Body:Optional[str]      = Form('...'),
+                Body:Optional[str]      = Form(''),
                 MediaUrl0:Optional[str] = Form('')):
     
     response = MessagingResponse() 
-    
+
     query       = Body.strip()
-    audio_file  = MediaUrl0 if (MediaUrl0) else None
+    media_resource  = MediaUrl0
     source      = From
     destination = To
 
-    context = InteractionContext(query=query,
-                                 source_id=source,
-                                 destination_id=destination,
-                                 audio_note_resorce_id=audio_file)
+    form_data = await request.form()
 
-    answer,duration   = run_qa_pipeline(context)
+    if not(isProcessable(form_data,query=query,media_file=media_resource)):
+       #The user sent an image or liked a message
+       logger.debug('Interaction is not processable') 
+       return
+
+    context = InteractionContext(query          =query,
+                                 source_id      =source,
+                                 destination_id =destination,
+                                 audio_note_resorce_id=media_resource)
+
+    answer,duration = run_qa_pipeline(context)
 
     if duration > MAX_WAIT_MILISECONDS:
        '''

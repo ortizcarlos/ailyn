@@ -85,8 +85,7 @@ async def handle_text_interaction(update: Update, context: ContextTypes.DEFAULT_
 async def audio_fn(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
    '''default handler to deal with voice note queries'''
 
-   user_id    = update.effective_user.id
-
+   user_id              = update.effective_user.id
    audio_resource_info  = await context.bot.get_file(update.message.voice.file_id)
    audio_file_path      = audio_resource_info.file_path
    
